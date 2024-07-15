@@ -8,12 +8,13 @@ const ClusterSummary = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage] = useState(7);
     const [totalItems, setTotalItems] = useState(0);
+    const apiUrl = process.env.REACT_APP_API_URL;
     useEffect(()=>{
         fetchData();
     },[]);
 
     const fetchData = () =>{
-       axios.get('http://localhost:8001/data')
+       axios.get(`/data`)
        .then((response) => {
         if (response.status === 200) {
           console.log("ClusterSummaryData>>>", response.data);

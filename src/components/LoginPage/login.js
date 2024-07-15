@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import axios from 'axios' 
 import { useNavigate } from 'react-router-dom'
 import Loader from "../Common/Loader/loader";
@@ -14,7 +14,13 @@ const Login = () => {
     const [error , setError] = useState(null);
     const [success , setSuccess] = useState(null);
     const [loading , setLoading] = useState(false);
+    const apiUrl = process.env.REACT_APP_API_URL;
 
+
+    // Debugging: Check if the environment variable is being read correctly
+    useEffect(() => {
+        console.log("API URL:", apiUrl);
+    }, [apiUrl]);
     function addUser(e) {
         e.preventDefault();
         
@@ -24,12 +30,13 @@ const Login = () => {
             return;
         }
         setLoading(true);
-        axios.post('/api/DistrictWiseSummary/login', {
+        axios.post(`/api/DistrictWiseSummary/login`, {
             LOGIN_ID: user.username,
             PASSWORD: user.password
         } , 
         {
-            headers: { 'Content-Type': 'application/json' }
+            headers: { 
+                'Content-Type': 'application/json' }
         }
         )
         .then((response) => {
@@ -49,7 +56,7 @@ const Login = () => {
         })
         .catch((error) => {
             console.log(error);
-            setError(`Invalid credentials! 🥺`);
+            setError(`Invalid credentials!`);
             setSuccess(null);
         })
         .finally(()=>{
@@ -85,10 +92,10 @@ const Login = () => {
         </div>
   </div>
   <div className='video-background'>
-  {/* <video autoPlay loop muted>
+  <video autoPlay loop muted>
       <source src={bgVideo}  type='video/mp4'/>
       Your browser does not support the video tag.
-  </video> */}
+  </video>
 </div>
         </>
          

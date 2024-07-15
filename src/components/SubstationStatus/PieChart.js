@@ -11,6 +11,8 @@ export default function PieClickNoSnap(props) {
   const {setSubstationstatusdata} = React.useContext(DataContext);
   const [ loading, setLoading] = React.useState(false);
   const navigate = useNavigate();
+  const apiUrl = process.env.REACT_APP_API_URL;
+
   const data1 = [
     { label: 'Completed', name: "Completed", value: prop1, color: "green" },
     { label: 'In Progress', name: "InProgress", value: prop2, color: "yellow" },

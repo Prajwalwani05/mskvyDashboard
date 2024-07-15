@@ -21,6 +21,8 @@ const SubstationStatus = () => {
   const [selectedDistrict, setSelectedDistrict] = useState("");
   const [augmentation, setAugmentation] = useState("");
   const [foundElement, setFoundElement] = useState("");
+  const apiUrl = process.env.REACT_APP_API_URL;
+
   useEffect(()=>{
     fetchData(DIST_CODE , augmny, setSubstationData, setLoading, navigate);
 
@@ -56,7 +58,7 @@ const SubstationStatus = () => {
     setLoading(true);
     axios
       .get(
-        "/api/DistrictWiseSummary/GetAllDistrictSummary",
+        `/api/DistrictWiseSummary/GetAllDistrictSummary`,
         {
           headers: { "Content-Type": "application/json" },
         }

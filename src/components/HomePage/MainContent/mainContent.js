@@ -11,12 +11,13 @@ const MainContent = () => {
   const [selectedDistrict, setSelectedDistrict] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const apiUrl = process.env.REACT_APP_API_URL;
   const augumny = "N";
   useEffect(() => {
     setLoading(true);
         axios
         .get(
-          "/api/DistrictWiseSummary/GetAllDistrictSummary",
+          `/api/DistrictWiseSummary/GetAllDistrictSummary`,
           {
             headers: { "Content-Type": "application/json" },
           }

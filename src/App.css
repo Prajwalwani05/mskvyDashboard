@@ -92,7 +92,6 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: red;
   height: 100vh;
   position: relative;
 }

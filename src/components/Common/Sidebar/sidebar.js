@@ -10,6 +10,8 @@ const SideBar = ({isOpen}) => {
   const [activeLink, setActiveLink] = useState('');
   const [loading, setLoading] = useState(false);
   const [openSubmenus, setOpenSubmenus] = useState({});
+  const apiUrl = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
     // Add event listener to track changes in the location
     const handleActiveLink = () => {
@@ -31,7 +33,7 @@ const SideBar = ({isOpen}) => {
 
     useEffect(() => {
       setLoading(true);
-         axios.get('/api/Login/Menu?userId=1')
+         axios.get(`/api/Login/Menu?userId=1`)
         .then((response) => {
           // Check if response status is 200
           if (response.status === 200) {

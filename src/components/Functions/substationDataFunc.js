@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export const fetchData = (DIST_CODE, augmentation, setSubstationData, setLoading, navigate) => {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const substationDataFunc =  
   setLoading(true);
   axios
